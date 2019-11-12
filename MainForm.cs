@@ -52,7 +52,6 @@ namespace SteamSwitchAccount
         List<String> steam_user_list = new List<String>();
         List<String> steamid64_user_list = new List<String>();
         List<String> PersonaName = new List<String>();
-        String steam_user;
 
         public void flush_steam_user()
         {
