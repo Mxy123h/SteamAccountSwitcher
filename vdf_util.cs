@@ -55,7 +55,8 @@ namespace VdfConverter
             objType.GetProperties()
                 .Where(x => x.CanWrite)
                 .ToList()
-                .ForEach(x => {
+                .ForEach(x =>
+                {
                     WriteProperty(x.Name);
                     WriteValue(x.GetValue(obj, null));
                 });

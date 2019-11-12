@@ -66,7 +66,7 @@ namespace SteamSwitchAccount
                     comboBox_Account.Items.Add(steam_user_list[i]);
                 }
                 textBox_steamid64.Text = steamid64_user_list[0];
-                textBox_PersonaName.Text=PersonaName[0];
+                textBox_PersonaName.Text = PersonaName[0];
                 comboBox_Account.SelectedIndex = 0;
             }
         }
@@ -75,9 +75,6 @@ namespace SteamSwitchAccount
         {
             if (File.Exists(textBox_SteamPath.Text + @"\steam.exe"))
             {
-
-
-
                 FileStream sharedConfig = File.OpenRead(textBox_SteamPath.Text + @"\config\loginusers.vdf");
                 VdfDeserializer parser = new VdfDeserializer();
                 dynamic result = parser.Deserialize(sharedConfig);
