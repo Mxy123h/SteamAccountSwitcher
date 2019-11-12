@@ -47,11 +47,11 @@
             // 
             // groupBox_operation
             // 
-            resources.ApplyResources(this.groupBox_operation, "groupBox_operation");
             this.groupBox_operation.Controls.Add(this.button_SelectSteamPath);
             this.groupBox_operation.Controls.Add(this.textBox_SteamPath);
             this.groupBox_operation.Controls.Add(this.button_Chenge);
             this.groupBox_operation.Controls.Add(this.comboBox_Account);
+            resources.ApplyResources(this.groupBox_operation, "groupBox_operation");
             this.groupBox_operation.Name = "groupBox_operation";
             this.groupBox_operation.TabStop = false;
             // 
@@ -78,21 +78,21 @@
             // 
             // comboBox_Account
             // 
-            resources.ApplyResources(this.comboBox_Account, "comboBox_Account");
             this.comboBox_Account.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Account.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_Account, "comboBox_Account");
             this.comboBox_Account.Name = "comboBox_Account";
             this.comboBox_Account.SelectedIndexChanged += new System.EventHandler(this.comboBox_Account_SelectedIndexChanged);
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.button_copy2);
             this.groupBox2.Controls.Add(this.button_copy1);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.textBox_PersonaName);
             this.groupBox2.Controls.Add(this.textBox_steamid64);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
