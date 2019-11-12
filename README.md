@@ -1,2 +1,1 @@
-# SteamSwitchAccount
-Steam账号切换器
+# SteamAccountSwitcher
