@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using VdfConverter;
 
 namespace SteamSwitchAccount
 {
@@ -74,34 +75,20 @@ namespace SteamSwitchAccount
         {
             if (File.Exists(textBox_SteamPath.Text + @"\steam.exe"))
             {
-                steam_user = File.ReadAllText(textBox_SteamPath.Text + @"\config\loginusers.vdf");
-                byte[] mybyte = Encoding.UTF8.GetBytes(steam_user);
-                steam_user = Encoding.UTF8.GetString(mybyte);
-                Console.WriteLine(steam_user);
-                Regex rx = new Regex("\"AccountName\"		\"(.*?)\"");
-                MatchCollection matches = rx.Matches(steam_user);
-                Regex rx_id64 = new Regex(@"[76]\d{16}");
-                MatchCollection matches_id64 = rx_id64.Matches(steam_user);
-                Regex rx_name = new Regex("\"PersonaName\"		\"(.*?)\"");
-                MatchCollection matches_name = rx_name.Matches(steam_user);
-                foreach (Match m in matches)
-                {
-                    Console.WriteLine(m.Groups[1].Value);
-                    steam_user_list.Add(m.Groups[1].Value);
-                }
 
-                foreach (Match mm in matches_id64)
-                {
-                    Console.WriteLine(mm.Groups[0].Value);
-                    steamid64_user_list.Add(mm.Groups[0].Value);
-                }
 
-                foreach (Match mm in matches_name)
-                {
-                    Console.WriteLine(mm.Groups[1].Value);
-                    PersonaName.Add(mm.Groups[1].Value);
-                }
 
+                FileStream sharedConfig = File.OpenRead(textBox_SteamPath.Text + @"\config\loginusers.vdf");
+                VdfDeserializer parser = new VdfDeserializer();
+                dynamic result = parser.Deserialize(sharedConfig);
+                var users = result.users as IDictionary<string, dynamic>;
+                foreach (var user in users)
+                {
+                    steamid64_user_list.Add(user.Key);
+                    var u = user.Value as IDictionary<string, dynamic>;
+                    steam_user_list.Add(u["AccountName"]);
+                    PersonaName.Add(u["PersonaName"]);
+                }
                 flush_steam_user();
             }
         }
